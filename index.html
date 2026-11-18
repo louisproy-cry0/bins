@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Board game bins</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1d1d1b;--mute:#7a776f;--hi:#e4572e}
+@media(prefers-color-scheme:dark){:root{--bg:#151514;--card:#222220;--ink:#eeeae2;--mute:#9a968c}}
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.45 -apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink);padding:16px;max-width:640px;margin:auto}
+h1{font-size:22px;margin:8px 0 12px}
+input{width:100%;font:inherit;padding:10px 12px;border-radius:10px;border:1px solid var(--mute);background:var(--card);color:var(--ink);margin-bottom:14px}
+section{background:var(--card);border-radius:14px;padding:14px 16px;margin:0 0 12px;border:2px solid transparent;scroll-margin-top:12px}
+section:target{border-color:var(--hi)}
+h2{margin:0 0 6px;font-size:24px;display:flex;justify-content:space-between;align-items:baseline}
+h2 span{font-size:14px;color:var(--mute);font-weight:400}
+ul{margin:0;padding-left:20px} li{padding:2px 0}
+mark{background:#ffd54a;color:#000}
+.hide{display:none}
+</style></head><body>
+<h1>Board game bins</h1>
+<input id="q" type="search" placeholder="Find a game…" autocomplete="off">
+<section id="bin01"><h2>Bin 01<span>7 games</span></h2><ul><li>Twilight Imperium 4</li><li>Eclipse: Second Dawn</li><li>Xia + all expansions</li><li>Maracaibo</li><li>At the Gates of Loyang</li><li>Le Havre</li><li>Blokus Duo</li></ul></section><section id="bin02"><h2>Bin 02<span>11 games</span></h2><ul><li>7 Wonders + expansions</li><li>Captain Sonar</li><li>Quarriors! + Quartifacts</li><li>Camel Up</li><li>Gloomhaven</li><li>Innovation</li><li>Leaf + Season of the Bear</li><li>Bruges</li><li>Thurn and Taxis + Power and Glory</li><li>Morels</li><li>BANG! The Dice Game</li></ul></section>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const t=q.value.trim().toLowerCase();
+document.querySelectorAll('section').forEach(s=>{let any=false;
+s.querySelectorAll('li').forEach(li=>{const m=!t||li.textContent.toLowerCase().includes(t);li.classList.toggle('hide',!m);any=any||m});
+s.classList.toggle('hide',!any)})});
+</script></body></html>
